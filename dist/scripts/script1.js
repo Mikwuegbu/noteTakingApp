@@ -1,10 +1,10 @@
 const titlePost = document.getElementById('title');
 const textArea = document.getElementById('post');
 const submitBtn = document.getElementById('create-btn');
-const cancel = document.getElementById('cancel-btn');
 const formData = [];
 
 //Functions
+
 const submitFn = () => {
 	// validating inputs
 	if (!titlePost.value && !textArea.value) {
@@ -27,4 +27,3 @@ const submitFn = () => {
 //EventListeners
 
 submitBtn.addEventListener('click', submitFn);
-cancel.addEventListener('click', edit);
