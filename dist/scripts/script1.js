@@ -2,7 +2,8 @@ const titlePost = document.getElementById('title');
 const textArea = document.getElementById('post');
 const submitBtn = document.getElementById('create-btn');
 const formData = [];
-const editbtn = document.getElementById('cancel-btn');
+const cancelBtn = document.getElementById('cancel-btn');
+const editBtn = document.getElementById('edit-btn');
 
 //creating the id
 const uniqueId = () => {
@@ -40,6 +41,13 @@ const submitFn = (event) => {
 	localStorage.setItem('formData', JSON.stringify(formData));
 };
 
+//Cancel button
+const cancleFn = (event) => {
+	event.preventDefault();
+	location.href = './index.html';
+};
+
 //EventListeners
 
 submitBtn.addEventListener('click', submitFn);
+cancelBtn.addEventListener('click', cancleFn);
