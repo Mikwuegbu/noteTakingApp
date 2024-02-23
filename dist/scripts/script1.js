@@ -34,7 +34,7 @@ const submitFn = () => {
 		document.getElementById('formData').append('Text cannot be empty');
 	}
 
-	formData.concat(newPost);
+	formData.push(newPost);
 	localStorage.setItem('formData', JSON.stringify(formData));
 };
 
