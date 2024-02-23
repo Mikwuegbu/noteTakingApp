@@ -24,14 +24,16 @@ const newPost = {
 };
 
 //submit button fun
-const submitFn = () => {
+const submitFn = (event) => {
 	// validating inputs
 	if (!titlePost.value && !textArea.value) {
-		document.getElementById('formData').append('Input Fields cannot be empty');
-	} else if (!titlePost) {
-		document.getElementById('formData').append('Title cannot be empty');
-	} else if (!textArea) {
-		document.getElementById('formData').append('Text cannot be empty');
+		event.preventDefault();
+		document.getElementById('validate').innerHTML =
+			'*Input fields cannot be empty';
+	} else if (!titlePost.value || !textArea.value) {
+		event.preventDefault();
+		document.getElementById('validate').innerHTML =
+			'*One input field cannot be empty';
 	}
 
 	formData.push(newPost);
