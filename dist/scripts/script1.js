@@ -47,7 +47,12 @@ const cancleFn = (event) => {
 	location.href = './index.html';
 };
 
+// const editFn = (event) => {
+// 	event.preventDefault();
+// 	location.href = './create.html';
+// };
 //EventListeners
 
 submitBtn.addEventListener('click', submitFn);
 cancelBtn.addEventListener('click', cancleFn);
+// editBtn.addEventListener('click', editFn);
