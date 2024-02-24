@@ -33,15 +33,16 @@ const clearInputs = () => {
 const formValidate = () => {
 	const validate = document.getElementById('validate');
 	if (!titlePost.value && !textArea.value) {
-		validate.innerHTML = '*Input fields cannot be empty';
+		validate.innerHTML = '*Input fields cannot be empty!';
 	} else if (!titlePost.value || !textArea.value) {
-		validate.innerHTML = '*One input field cannot be empty';
+		validate.innerHTML = '*One input field cannot be empty!';
 	} else {
-		validate.innerHTML = '';
+		validate.innerHTML = `<div class="">Created successfully!!</div>`;
+		validate.style.color = 'green';
 		clearInputs();
 	}
 };
-//submit button fun
+//submit button function
 const submitFn = (event) => {
 	event.preventDefault();
 	formValidate();
@@ -49,22 +50,13 @@ const submitFn = (event) => {
 	//storing to the localStorage
 	formData.push(newPost);
 	localStorage.setItem('formData', JSON.stringify(formData));
-
-	//document.getElementById('validate').append('Hellow word');
 };
 
-//Cancel button
+//Cancel button function
 const cancleFn = (event) => {
 	event.preventDefault();
 	location.href = './index.html';
 };
 
-// const editFn = (event) => {
-// 	event.preventDefault();
-// 	location.href = './create.html';
-// };
-//EventListeners
-
 submitBtn.addEventListener('click', submitFn);
 cancelBtn.addEventListener('click', cancleFn);
-// editBtn.addEventListener('click', editFn);
