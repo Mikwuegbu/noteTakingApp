@@ -1,14 +1,17 @@
 const mainPage = document.getElementById('main');
 
-const newNote = (formData) => {
-	html = `<div class="pb-1 hover:shadow-md hover:cursor-pointer">
+//Function to Display the Notes
+const createNewNote = () => {
+	const newNote = localStorage.getItem('formData');
+	JSON.parse(newNote).forEach((data) => {
+		const html = `<div class="pb-1 hover:shadow-md hover:cursor-pointer">
 				<div
 					class="font-medium text-justify tracking-normal my-10 mx-10 xl:mx-72"
 				>
 					<h1 class="font-semibold text-2xl mb-2">
-						${formData.title}
+						${data.title}
 					</h1>
-					${formData.note}
+					${data.note}
 					<div class="mt-6 space-x-7 flex justify-end">
 						<button
 							class="bg-blue-600 text-white px-6 py-1.5 rounded-2xl hover:bg-blue-500"
@@ -23,14 +26,8 @@ const newNote = (formData) => {
 					</div>
 				</div>
 			</div>`;
-
-	mainPage.insertAdjacentHTML('beforeend', newNote);
-};
-
-const createNewNote = () => {
-	const newNote = localStorage.getItem('formData');
-	JSON.parse(newNote).forEach((formData) => {
-		newNote(formData);
+		mainPage.insertAdjacentHTML('beforeend', html);
 	});
 };
+
 createNewNote();
