@@ -1,41 +1,28 @@
 const titlePost = document.getElementById('title');
 const textArea = document.getElementById('post');
 const submitBtn = document.getElementById('create-btn');
-// const formData = [];
 const cancelBtn = document.getElementById('cancel-btn');
 
-//creating the id
-// const uniqueId = () => {
-// 	//checking for existing id
-// 	const initialId = localStorage.getItem('initialId');
-// 	//if found increment else create new one
-// 	const currentId = initialId ? parseInt('initialId') + 1 : 1;
+function createFormData(title, note) {
+	// Retrieve existing data from local storage
+	let formData = JSON.parse(localStorage.getItem('formData')) || [];
 
-// 	//update the initialId
-// 	localStorage.setItem('initialId', currentId);
-// 	return currentId;
-// };
-// const createNote = () => {
-// 	const note = localStorage.getItem('note');
-// 	if (!note) {
-// 		localStorage.setItem('note', JSON.stringify([]));
-// 	}
-// };
+	// Get the last used id or set it to 0
+	let lastId = formData.length > 0 ? formData[formData.length - 1].id : 0;
 
-// const Notes = localStorage.getItem('note');
-// const formdata = JSON.parse(note);
-// const title = titlePost.value;
-// const note = textArea.value;
-// const id = formdata.length + 1;
+	// Increment the last used id
+	let newId = lastId + 1;
 
-// const formData = [...formdata];
+	// Create a new form data object
+	let newFormData = {
+		id: newId,
+		title: title,
+		note: note,
+	};
 
-//new Object
-// const newPost = {
-// 	id,
-// 	title: titlePost.value,
-// 	note: textArea.value,
-// };
+	formData.push(newFormData);
+	localStorage.setItem('formData', JSON.stringify(formData));
+}
 
 //Clear the inputs
 const clearInputs = () => {
@@ -55,6 +42,7 @@ const formValidate = () => {
 	} else {
 		validate.innerHTML = 'Created successfully!!';
 		validate.style.color = 'green';
+		createFormData(titlePost.value, textArea.value);
 		clearInputs();
 	}
 };
@@ -62,10 +50,6 @@ const formValidate = () => {
 const submitFn = (event) => {
 	event.preventDefault();
 	formValidate();
-
-	//storing to the localStorage
-	// formData.push(newPost);
-	// localStorage.setItem('formData', JSON.stringify(formData));
 };
 
 //Cancel button function
