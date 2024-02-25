@@ -18,7 +18,7 @@ const createNewNote = () => {
 						>
 							Edit
 						</button>
-						<button
+						<button  onClick="deleteFn(${data.id})"
 							class="bg-red-600 text-white px-4 py-1.5 rounded-2xl hover:bg-red-500"
 						>
 							Delete
@@ -28,6 +28,18 @@ const createNewNote = () => {
 			</div>`;
 		mainPage.insertAdjacentHTML('beforeend', html);
 	});
+};
+
+//delete funtion
+const deleteFn = (id) => {
+	// Retrieve data from local storage
+	let formData = JSON.parse(localStorage.getItem('formData'));
+	// Filter out the object with the specified ID
+	formData = formData.filter((data) => data.id !== id);
+
+	// Update local storage with the modified array
+	localStorage.setItem('formData', JSON.stringify(formData));
+	location.reload();
 };
 
 createNewNote();

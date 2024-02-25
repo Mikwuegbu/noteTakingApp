@@ -40,6 +40,12 @@ const formValidate = () => {
 		validate.innerHTML = '*One input field cannot be empty!';
 		validate.style.color = 'red';
 	} else {
+		//Delay redirect
+		setInterval(() => {
+			location.href = './index.html';
+		}, 1000);
+
+		//confirm submission
 		validate.innerHTML = 'Created successfully!!';
 		validate.style.color = 'green';
 		createFormData(titlePost.value, textArea.value);
